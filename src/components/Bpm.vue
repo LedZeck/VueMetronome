@@ -17,8 +17,6 @@ export default {
     vueBus.$on('increaseValue', (value) => {
       this.beat = this.beat + value
     })
-    vueBus.$on('teste', (string) => {
-    })
     vueBus.$on('beatValueFromSlider', (value) => {
       console.log(value)
       this.beat = value

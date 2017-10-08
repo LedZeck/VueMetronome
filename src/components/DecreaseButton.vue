@@ -14,8 +14,7 @@ export default {
   }),
   methods: {
     decrease () {
-      const value = 1
-      vueBus.$emit('decreaseValue', value)
+      vueBus.$emit('decreaseValue', 1)
     }
   }
 }
