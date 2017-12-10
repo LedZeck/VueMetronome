@@ -7,6 +7,7 @@
 </template>
 <script>
 import Rythm from 'rythm.js'
+const rythm = new Rythm()
 export default {
   name: 'playButton',
   data: () => ({
@@ -17,7 +18,6 @@ export default {
       const myAudioCtx = new AudioContext()
       myAudioCtx.close().then(() => {
         this.rythmBass = !this.rythmBass
-        const rythm = new Rythm()
         rythm.stop()
         rythm.setMusic('../../static/tick.mp3')
         rythm.start()
