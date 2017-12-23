@@ -1,6 +1,6 @@
 <template>
   <el-row id="playButtonWrapper">
-    <el-col :span="24">
+    <el-col :span="24" class="fixBlurry">
       <img id="playButton" src="../assets/play-button.svg" alt="Play Button" @click="changeRythm" :class="{'rythm-bass': rythmBass}">
     </el-col>
   </el-row>
@@ -14,14 +14,13 @@ export default {
     rythmBass: false
   }),
   methods: {
-    changeRythm () {
+    async changeRythm () {
       const myAudioCtx = new AudioContext()
-      myAudioCtx.close().then(() => {
-        this.rythmBass = !this.rythmBass
-        rythm.stop()
-        rythm.setMusic('../../static/tick.mp3')
-        rythm.start()
-      })
+      await myAudioCtx.close()
+      this.rythmBass = !this.rythmBass
+      rythm.stop()
+      rythm.setMusic('../../static/tick.mp3')
+      rythm.start()
     }
   }
 }
@@ -32,5 +31,10 @@ export default {
   }
   #playButtonWrapper {
     margin-top: 50px;
+  }
+  // fix chrome image blurry
+  .fixBlurry {
+    -webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;
   }
 </style>
