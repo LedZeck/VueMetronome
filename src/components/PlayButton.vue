@@ -7,20 +7,37 @@
 </template>
 <script>
 import Rythm from 'rythm.js'
+import vueBus from '../services/Bus'
 const rythm = new Rythm()
 export default {
   name: 'playButton',
   data: () => ({
-    rythmBass: false
+    rythmBass: false,
+    beatTime: 60,
+    teste: 100
   }),
+  created () {
+    vueBus.$on('increaseValue', (value) => {
+      this.beatTime = this.beatTime + value
+    })
+    vueBus.$on('decreaseValue', (value) => {
+      this.beatTime = this.beatTime - value
+    })
+    vueBus.$on('beatValueFromSlider', (value) => {
+      this.beatTime = value
+    })
+  },
   methods: {
     async changeRythm () {
-      const myAudioCtx = new AudioContext()
-      await myAudioCtx.close()
-      this.rythmBass = !this.rythmBass
-      rythm.stop()
-      rythm.setMusic('../../static/tick.mp3')
-      rythm.start()
+      const time = vueBus.beatTime(this.beatTime)
+      await setInterval(() => {
+        const myAudioCtx = new AudioContext()
+        myAudioCtx.close()
+        this.rythmBass = !this.rythmBass
+        rythm.stop()
+        rythm.setMusic('../../static/tick.mp3')
+        rythm.start()
+      }, time)
     }
   }
 }

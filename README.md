@@ -19,9 +19,11 @@
 
 > * [x] Layout
 > * [x] Components global communication using Bus
-> * [ ] Find and add some cool `pop` or `click` .mp3 sound effects to our metronome
-> * [ ] Instantiate and use RythmJS
-> * [ ] Create a service that exactly calculates the .mp3 BPM.
+> * [x] Find and add some cool `pop` or `click` .mp3 sound effects to our metronome
+> * [x] Instantiate and use RythmJS
+> * [x] Create a service that exactly calculates the .mp3 BPM.
+> * [x] Create communication between buttons, slider and playbutton
+> * [ ] Change the audio speed in runtime
 > * [ ] Challenge: Animate Metronome top logo or the play button based on the sound beat using RythmJS!
 
 ## Contributing
