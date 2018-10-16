@@ -23,7 +23,7 @@
 > * [x] Instantiate and use RythmJS
 > * [x] Create a service that exactly calculates the .mp3 BPM.
 > * [x] Create communication between buttons, slider and playbutton
-> * [ ] Change the audio speed in runtime
+> * [x] Change the audio speed in runtime
 > * [ ] Challenge: Animate Metronome top logo or the play button based on the sound beat using RythmJS!
 
 ## Contributing
