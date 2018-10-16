@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "node-sass": "^4.5.3",
-    "rythm.js":"^2.1.1",
-    "sass-loader":"^6.0.6",
+    "rythm.js": "^2.1.1",
+    "sass-loader": "^6.0.6",
     "element-ui": "^1.4.6",
     "vue": "^2.4.2"
   },
