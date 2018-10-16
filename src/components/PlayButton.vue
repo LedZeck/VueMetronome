@@ -4,7 +4,7 @@
       <img id="playButton"
         src="../assets/play-button.svg"
         alt="Play Button"
-        @click="changeRythm"
+        @click="toggleMetronome"
         :class="{'rythm-bass': rythmBass}">
     </el-col>
   </el-row>
@@ -22,32 +22,42 @@ export default {
   data: () => ({
     rythmBass: false,
     beatTime: 60,
-    playing: true
+    playing: false
   }),
   created () {
     vueBus.$on('increaseValue', (value) => {
       this.beatTime = this.beatTime + value
+      this.changeRythm()
     })
     vueBus.$on('decreaseValue', (value) => {
       this.beatTime = this.beatTime - value
+      this.changeRythm()
     })
     vueBus.$on('beatValueFromSlider', (value) => {
       this.beatTime = value
+      this.changeRythm()
     })
   },
   methods: {
     async changeRythm () {
       const time = vueBus.beatTime(this.beatTime)
       if (this.playing === true) {
-        this.playing = false
+        // Clear any pre-existing loop before starting a new one
+        if (loop) clearInterval(loop)
+
+        // Start a loop with a new bpm
         loop = await setInterval(() => {
+          console.log('in interval')
           this.rythmBass = true
           rythm.start()
         }, time)
       } else {
-        this.playing = true
         return clearInterval(loop)
       }
+    },
+    toggleMetronome () {
+      this.playing = !this.playing
+      this.changeRythm()
     }
   }
 }
