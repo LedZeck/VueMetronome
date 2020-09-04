@@ -11,7 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.13.1",
     "rythm.js": "^2.1.1",
     "sass-loader": "^6.0.6",
     "element-ui": "^1.4.6",
